@@ -3,7 +3,6 @@ import {Component} from "react";
 import MarvelService from "../../services/MarvelService";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
-import nextId from "react-id-generator";
 
 class CharList extends Component{
 
@@ -44,7 +43,8 @@ class CharList extends Component{
 
     render() {
         const {chars, loading, error} = this.state,
-            CharListItems = chars.map(item => <CharListItem key={nextId()} name={item.name} img={item.thumbnail}/>);
+            {onCharSelected} = this.props,
+            CharListItems = chars.map(item => <CharListItem key={item.id} onClickChar={()=>onCharSelected(item.id)} name={item.name} img={item.thumbnail}/>);
 
         const spinner = loading ? <Spinner/> : null,
               errorMessage = error ? <ErrorMessage/> : null,
@@ -67,13 +67,14 @@ class CharList extends Component{
 
 const CharListItem = (props) => {
 
-    const objectFitValue = props.img.includes('image_not_available') ? 'contain' : 'cover',
+    const {onClickChar} = props,
+        objectFitValue = props.img.includes('image_not_available') ? 'contain' : 'cover',
         styleImg = {
             objectFit: objectFitValue,
         };
 
     return (
-        <li className="char__item">
+        <li className="char__item" onClick={onClickChar}>
             <img style={styleImg} src={props.img} alt="abyss"/>
             <div className="char__name">{props.name}</div>
         </li>

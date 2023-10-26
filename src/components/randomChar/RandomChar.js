@@ -17,7 +17,6 @@ class RandomChar extends Component {
         char: {},
         loading: true,
         error: false,
-        change: false
     }
 
     marvelService = new MarvelService();
@@ -25,16 +24,15 @@ class RandomChar extends Component {
     updateChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
         console.log('request')
+        this.onCharLoading()
         this.marvelService.getCharacter(id)
             .then(this.onCharLoaded)
             .catch(this.onError);
     }
 
-    onRandomClick = () => {
+    onCharLoading = () => {
         this.setState({
-            change: true,
             loading: true,
-            error: false,
         });
     }
 
@@ -43,7 +41,6 @@ class RandomChar extends Component {
             char,
             loading: false,
             error: false,
-            change: false
         })
     }
 
@@ -65,7 +62,7 @@ class RandomChar extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log('update')
-        if (this.state.change) this.updateChar();
+    //     if (this.state.change) this.updateChar();
     }
 
     componentWillUnmount() {
@@ -92,7 +89,7 @@ class RandomChar extends Component {
                     <p className="randomchar__title">
                         Or choose another one
                     </p>
-                    <button onClick={this.onRandomClick}
+                    <button onClick={this.updateChar}
                             className="button button__main">
                         <div className="inner">try it</div>
                     </button>
