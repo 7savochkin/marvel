@@ -1,4 +1,5 @@
 import './comicsList.scss';
+import {Link, Outlet} from "react-router-dom";
 import useMarvelService from "../../services/MarvelService";
 import {useEffect, useState} from "react";
 import Spinner from "../spinner/Spinner";
@@ -65,15 +66,15 @@ const ComicsList = () =>  {
 
 const ComicListItem = (props) => {
 
-    const {title, thumbnail, price} = props.itemObj;
+    const {id, title, thumbnail, price} = props.itemObj;
 
     return (
         <li className="comics__item">
-            <a href="#">
+            <Link to={`/comics/${id}`}>
                 <img src={thumbnail} alt="x-men" className="comics__item-img"/>
                 <div className="comics__item-name">{title}</div>
                 <div className="comics__item-price">{`${price}`.toUpperCase()}</div>
-            </a>
+            </Link>
         </li>
     )
 }

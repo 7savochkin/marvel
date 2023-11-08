@@ -13,7 +13,7 @@ const CharList = (props) => {
         [offset, setOffset] = useState(210),
         [charEnded, setCharEnded] = useState(false);
 
-    const {loading, error, clearError, getAllCharacters} = useMarvelService();
+    const {loading, error, getAllCharacters} = useMarvelService();
 
     useEffect(() => onRequest(offset, true), [])
 
@@ -24,6 +24,9 @@ const CharList = (props) => {
     }
 
     const loadingData = (newChars) => {
+        // const {logger, secondLog} = await import('./someFunc');
+        // logger();
+        // secondLog();
         let ended = false;
         if (newChars.length < 9) {
             ended = true;
@@ -74,6 +77,12 @@ const CharList = (props) => {
                                                                  name={item.name} img={item.thumbnail}/>);
     const spinner = loading && !newItemLoading ? <Spinner/> : null,
         errorMessage = error ? <ErrorMessage/> : null;
+
+    // if (loading){
+    //     import('./someFunc')
+    //         .then(obj=> obj.default())
+    //         .catch();
+    // }
 
     return (
         <div className="char__list">

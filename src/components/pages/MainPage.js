@@ -6,7 +6,7 @@ import decoration from "../../resources/img/vision.png";
 import {useState} from "react";
 
 
-export const MainPage = () =>{
+const MainPage = () =>{
 
     const [selectedChar, setChar] = useState(null);
 
@@ -29,3 +29,5 @@ export const MainPage = () =>{
         </>
     )
 }
+
+export default MainPage;

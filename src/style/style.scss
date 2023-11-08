@@ -69,6 +69,10 @@ main {
   animation: pulse 1.5s ease-in-out .5s infinite
 }
 
+.navigation-active{
+  color: #9F0013;
+}
+
 @keyframes pulse {
   0% {
     opacity: 1

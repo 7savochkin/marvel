@@ -1,11 +1,12 @@
 import './charInfo.scss';
 import {useEffect, useState} from "react";
 import useMarvelService from "../../services/MarvelService";
-import Skeleton from "../skeleton/Skeleton";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 import PropTypes from "prop-types";
+import Skeleton from "../skeleton/Skeleton";
 
+import {Link} from "react-router-dom";
 
 const CharInfo = (props) => {
 
@@ -60,9 +61,12 @@ const View = ({char}) => {
         if (comics.length === 0) return <p>Comics were not found</p>;
         for (let i = 0; i < 9; i++) {
             if (comics.length > i) {
+                let id = comics[i].resourceURI.split('/').slice(-1)[0];
                 comicsList.push(
                     <li key={i} className="char__comics-item">
-                        {comics[i].name}
+                        <Link className="char__comics-link" to={`/comics/${id}`}>
+                            {comics[i].name}
+                        </Link>
                     </li>
                 )
             }
