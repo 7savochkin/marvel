@@ -4,9 +4,13 @@ import useMarvelService from "../../services/MarvelService";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import PropTypes from "prop-types";
+import {memo} from "react";
 
+function compareProps(prevProps, newProps){
+    return prevProps.onCharSelected === newProps.onCharSelected;
+}
 
-const CharList = (props) => {
+const CharList = memo((props) => {
 
     const [chars, setChars] = useState([]),
         [newItemLoading, setNewItemLoading] = useState(false),
@@ -101,7 +105,7 @@ const CharList = (props) => {
             </button>
         </div>
     )
-}
+}, compareProps)
 
 
 const CharListItem = (props) => {

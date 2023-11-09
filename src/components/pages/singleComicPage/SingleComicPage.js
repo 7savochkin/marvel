@@ -12,7 +12,7 @@ const SingleComicPage = () => {
     const {loading, error, clearError, getComic} = useMarvelService();
 
     useEffect(() => {
-        updateComic()
+        updateComic();
     }, [comicId]);
 
     const updateComic = () => {
@@ -40,8 +40,6 @@ const SingleComicPage = () => {
 
 const View = ({comic}) => {
     const {title, description, pageCount, thumbnail, language, price} = comic;
-
-    console.log(comic);
 
     return (
         <div className="single-comic">
