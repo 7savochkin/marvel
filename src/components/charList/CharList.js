@@ -23,7 +23,7 @@ const CharList = memo((props) => {
 
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
-        getAllCharacters(offset)
+        getAllCharacters(offset, "Captain Flint")
             .then(loadingData)
     }
 

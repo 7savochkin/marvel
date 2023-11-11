@@ -23,7 +23,7 @@ const ComicsList = () =>  {
     const onRequest = (initial=false) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
         clearError();
-        getAllComics(offset, limit)
+        getAllComics(offset)
             .then(onDataLoaded)
     }
 
