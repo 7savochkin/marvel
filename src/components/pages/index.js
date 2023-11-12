@@ -1,6 +1,7 @@
 import {MainPage} from "./MainPage";
 import {ComicsPage} from "./ComicsPage";
-import {SingleComicPage} from "./singleComicPage/SingleComicPage";
+import {WithSingleComicPage} from "./singleComicPage/SingleComicPage";
+import {WithSingleCharPage} from "./singleCharPage/SingleCharPage"
 
 
-export {MainPage, ComicsPage, SingleComicPage};
+export {MainPage, ComicsPage, WithSingleComicPage, WithSingleCharPage};

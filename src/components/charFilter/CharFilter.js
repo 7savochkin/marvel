@@ -11,7 +11,7 @@ const CharFilter = () => {
 
     const [char, setChar] = useState({}),
           [notFound, setNotFound] = useState(false),
-         [startPoint, setStartPoint] = useState(false);
+          [startPoint, setStartPoint] = useState(false);
 
     const {loading, error, clearError, getCharacterByName} = useMarvelService();
 
@@ -36,7 +36,7 @@ const CharFilter = () => {
         return (
             <div className="char__search-wrapper">
                 <div className="char__search-success">There is {char.name}! Visit page?</div>
-                <Link className="button button__secondary">
+                <Link to={`/characters/${char.id}`} className="button button__secondary">
                     <div className="inner">To page</div>
                 </Link>
             </div>
